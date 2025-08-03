@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fashion Star ⭐</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .brand-name {
+      font-size: 26px;
+      font-weight: bold;
+      color: #222;
+      margin-left: 10px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background: #f8f8f8;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .search-bar input {
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .icons i {
+      margin-left: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .form-section {
+      padding: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+    .product-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+    .product-card {
+      border: 1px solid #ddd;
+      padding: 10px;
+      width: 200px;
+      text-align: center;
+    }
+    .product-card img {
+      width: 100%;
+      height: auto;
+    }
+    .product-card .price {
+      font-weight: bold;
+      color: green;
+    }
+    #cartSection, #likedSection, #profileForm {
+      padding: 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    #sidebar {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background: #fff;
+      width: 200px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+      padding: 10px;
+    }
+    #sidebar ul {
+      padding: 0;
+    }
+    #sidebar ul li {
+      margin-bottom: 10px;
+    }
+    #sidebar ul li a {
+      text-decoration: none;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <i class="ri-menu-line" onclick="toggleSidebar()"></i>
+    <div class="brand">
+      <!-- Removed logo image -->
+      <span class="brand-name">Fashion Star ⭐</span>
+    </div>
+  </div>
+  <div class="search-bar">
+    <input type="text" placeholder="Search products..." id="searchInput" onkeyup="searchProducts()" />
+  </div>
+  <div class="icons">
+    <i class="ri-user-line" onclick="showProfileForm()"></i>
+    <i class="ri-heart-line" onclick="showLikedItems()"></i>
+    <i class="ri-shopping-cart-line" onclick="showCart()"></i>
+  </div>
+</header>
+
+<div id="sidebar" class="hidden">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Categories</a></li>
+    <li><a href="#">Offers</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</div>
+
+<!-- Login -->
+<div id="login-section" class="form-section">
+  <h2>Login</h2>
+  <input id="login-email" placeholder="Email" /><br/><br/>
+  <input id="login-password" type="password" placeholder="Password" /><br/><br/>
+  <button onclick="loginUser()">Login</button>
+  <p id="login-msg"></p>
+  <p>Don't have an account? <a onclick="showRegister()">Register</a></p>
+</div>
+
+<!-- Register -->
+<div id="register-section" class="form-section hidden">
+  <h2>Register</h2>
+  <input id="reg-name" placeholder="Name" /><br/><br/>
+  <input id="reg-mobile" placeholder="Mobile" /><br/><br/>
+  <input id="reg-email" placeholder="Email" /><br/><br/>
+  <input id="reg-password" type="password" placeholder="Password" /><br/><br/>
+  <input id="reg-address" placeholder="Address" /><br/><br/>
+  <button onclick="sendOTP()">Send OTP</button><br/><br/>
+  <div id="otp-section" class="hidden">
+    <input id="reg-otp" placeholder="Enter OTP" /><br/><br/>
+    <button onclick="verifyOTP()">Verify OTP</button>
+  </div>
+  <p id="reg-msg"></p>
+  <p>Already registered? <a onclick="showLogin()">Login</a></p>
+</div>
+
+<!-- Shopping Page -->
+<div id="shopping-section" class="hidden">
+  <div class="product-list" id="productList">
+    <!-- Product Cards -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150x100?text=Shirt" />
+      <h3>Men's Shirt</h3>
+      <p class="price">₹799</p>
+      <i class="ri-heart-line" onclick="toggleLike(this)"></i>
+      <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150x100?text=Kurti" />
+      <h3>Women's Kurti</h3>
+      <p class="price">₹999</p>
+      <i class="ri-heart-line" onclick="toggleLike(this)"></i>
+      <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150x100?text=T-Shirt" />
+      <h3>Child T-Shirt</h3>
+      <p class="price">₹499</p>
+      <i class="ri-heart-line" onclick="toggleLike(this)"></i>
+      <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150x100?text=Jeans" />
+      <h3>Unisex Jeans</h3>
+      <p class="price">₹1299</p>
+      <i class="ri-heart-line" onclick="toggleLike(this)"></i>
+      <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+  </div>
+
+  <div id="cartSection" class="hidden">
+    <h3>Cart Items:</h3>
+    <ul id="cartItems"></ul>
+  </div>
+
+  <div id="likedSection" class="hidden">
+    <h3>Liked Items:</h3>
+    <ul id="likedItems"></ul>
+  </div>
+
+  <div id="profileForm" class="hidden">
+    <h3>User Profile</h3>
+    <p>Name: <span id="profile-name"></span></p>
+    <input id="profile-email" readonly />
+    <input id="profile-mobile" readonly />
+    <input id="profile-address" readonly />
+    <br/><br/>
+    <button onclick="logoutUser()">Logout</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
