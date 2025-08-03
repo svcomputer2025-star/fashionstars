@@ -1,0 +1,103 @@
+/* Reset and Base */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: linear-gradient(135deg, #f9d423, #ff4e50, #1e90ff, #32cd32);
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+}
+
+/* Gradient animation */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.search-bar input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 200px;
+}
+
+.icons i {
+  font-size: 20px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+/* Sidebar */
+#sidebar {
+  background: #fff;
+  padding: 10px;
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Form Section */
+.form-section {
+  margin: 20px;
+  padding: 15px;
+  background: #fff;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.form-section input {
+  width: 95%;
+  margin: 10px 0;
+  padding: 8px;
+}
+
+/* Product Card */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 20px;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  width: 200px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.product-card h3, .product-card p {
+  margin: 5px 0;
+}
+
+.product-card button {
+  width: 100%;
+  padding: 6px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
